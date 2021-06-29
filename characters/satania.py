@@ -26,7 +26,7 @@ class Satania:
         self.moving_down = False
     def update(self):
         """
-        обновить текущю позицию корабля на основе индикатора движения
+        обновить текущю позицию сатании на основе индикатора движения
         """
 
         if self.moving_right and self.rect.right < self.screen_rect.right:

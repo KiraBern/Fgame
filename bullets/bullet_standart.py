@@ -15,7 +15,7 @@ class Bullets1(Sprite):
         # создать rect снаряда в 0,0 и задать правильное положение
         self.rect = pygame.Rect(0, 0, self.settings.bullet_width,
                                 self.settings.bullet_height)
-        self.rect.midtop = ai_game.satania.rect.midtop    # !!!!!!!!!!!!возможная ошибка
+        self.rect.midright = ai_game.satania.rect.midright    # !!!!!!!!!!!!возможная ошибка
 
         # Сохранение позиции снаряда как десятичное значение
         self.x = float(self.rect.x)
