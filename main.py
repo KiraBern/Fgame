@@ -1,7 +1,7 @@
 import sys
 import pygame
 
-import bullets.bullet_standart
+from bullets.bullet_standart import Bullets1
 from config.settings import Settings
 from characters.satania import Satania
 
@@ -40,9 +40,10 @@ class FGame:
                         self.satania.moving_down = True
                     elif event.key == pygame.K_BACKSPACE:
                         sys.exit()
-                    # elif event.key == pygame.K_SPACE:
-                    #     new_bullet = bullets.bullet_standart.bullet_standart
-                    #     self.bullets.add(new_bullet)
+                    elif event.key == pygame.K_SPACE:
+                        new_bullet = Bullets1(self)
+                        self.bullets.add(new_bullet)
+
                 elif event.type == pygame.KEYUP:
                     if event.key ==pygame.K_RIGHT:
                         self.satania.moving_right = False
@@ -56,11 +57,12 @@ class FGame:
 
             """Обновление состояния корабля"""
             self.satania.update()
-            # self.bullet_standart.update()
+            self.bullets.update()
             """заново перерисовать экран на каждой итерации цикла"""
             self.screen.fill(self.settings.bg_color)
             self.satania.blitme()  # отрисовка сатании
-
+            for bullet in self.bullets.sprites():
+                bullet.draw_bullet()
 
             """Показ последний нарисованый екран"""
             pygame.display.flip()
