@@ -1,6 +1,7 @@
 import pygame
 from config.settings import Settings
 
+
 class Satania:
     def __init__(self, ai_game):
         """инициализация корабля и задание eго стартовой позиции"""
@@ -24,7 +25,14 @@ class Satania:
         self.moving_left = False
         self.moving_up = False
         self.moving_down = False
+
+        # индикаторы действий
+        self.shot_indi = False
+
     def update(self):
+
+        self._update_pic_satania()  # обновление изображения сатании
+
         """
         обновить текущю позицию сатании на основе индикатора движения
         """
@@ -41,6 +49,18 @@ class Satania:
         self.rect.x = self.x
         self.rect.y = self.y
 
+    def _update_pic_satania(self):
+        if self.shot_indi == True:  # если выстрел то меняем текстуру
+            self.image = pygame.image.load('picture/satania_shot.bmp')
+            self.rect = self.image.get_rect()
+            self.rect.x = self.x
+            self.rect.y = self.y
+        if self.shot_indi == False:
+            self.image = pygame.image.load('picture/satania_stay.bmp')
+            self.rect = self.image.get_rect()
+            self.rect.x = self.x
+            self.rect.y = self.y
+
     def blitme(self):
-        """отрисовка  в его теперишнем местоположении"""
+        """отрисовка  в её теперишнем местоположении"""
         self.screen.blit(self.image, self.rect)

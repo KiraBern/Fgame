@@ -67,6 +67,8 @@ class FGame:
                 elif event.key == pygame.K_SPACE:
                     new_bullet = Bullets1(self)
                     self.bullets.add(new_bullet)
+                    self.satania.shot_indi = True
+
 
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
@@ -77,6 +79,8 @@ class FGame:
                     self.satania.moving_up = False
                 elif event.key == pygame.K_DOWN:
                     self.satania.moving_down = False
+                elif event.key == pygame.K_SPACE:
+                    self.satania.shot_indi = False
 
 
 if __name__ == '__main__':
