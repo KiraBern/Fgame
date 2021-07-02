@@ -1,4 +1,7 @@
 import pygame
+from PIL import Image
+import picture.picture_pillow
+from picture.picture_pillow import Pic_pil
 from config.settings import Settings
 
 
@@ -10,7 +13,13 @@ class Satania:
         self.screen_rect = ai_game.screen.get_rect()
 
         """Загрузка изображения и получение его rect"""
+
+        # self.im = Image.open('picture/satania_sprite.bmp')
+        # self.picture_satania = self.im.crop(self.settings.pic_pil01)
+        # self.picture_satania.save('satania_stay01.bmp', quality=95)
+        # self.image = pygame.image.load(self.picture_satania)
         self.image = pygame.image.load('picture/satania_stay.bmp')
+
         self.rect = self.image.get_rect()
 
         """каждый новый герой стартует с позиции..."""
